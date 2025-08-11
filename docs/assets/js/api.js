@@ -1,7 +1,5 @@
-// PENTING: Ganti URL ini dengan URL backend PHP Anda di InfinityFree nanti
-// Contoh: 'https://namasitus.infinityfreeapp.com/backend/'
-const BASE_URL = 'http://income-manager.infy.uk/backend/'; // URL untuk development lokal
-// const BASE_URL = 'http://localhost/trading-income-manager/backend/';
+// PENTING: Pastikan Anda sudah mengaktifkan SSL di InfinityFree
+const BASE_URL = 'https://income-manager.infy.uk/backend/'; // URL diperbarui ke HTTPS
 
 /**
  * Fungsi pembantu untuk melakukan request fetch API.
@@ -34,7 +32,6 @@ async function apiRequest(endpoint, options = {}) {
         const data = await response.json();
 
         if (!response.ok) {
-            // Jika user tidak terautentikasi (401), redirect ke login
             if (response.status === 401) {
                 sessionStorage.removeItem('userData');
                 window.location.href = 'login.html';
