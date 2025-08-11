@@ -51,18 +51,9 @@ async function apiRequest(endpoint, options = {}) {
 function registerUser(userData) {
     return apiRequest('auth/register.php', { method: 'POST', body: JSON.stringify(userData) });
 }
-
-// UBAH FUNGSI INI UNTUK SEMENTARA
 function loginUser(credentials) {
-    // Arahkan ke file tes, bukan login.php
-    return apiRequest('test_cors.php', { method: 'POST', body: JSON.stringify(credentials) });
+    return apiRequest('auth/login.php', { method: 'POST', body: JSON.stringify(credentials) });
 }
-// function registerUser(userData) {
-//     return apiRequest('auth/register.php', { method: 'POST', body: JSON.stringify(userData) });
-// }
-// function loginUser(credentials) {
-//     return apiRequest('auth/login.php', { method: 'POST', body: JSON.stringify(credentials) });
-// }
 
 // --- FUNGSI TRANSAKSI ---
 function getLaporanData(filters = {}) {
