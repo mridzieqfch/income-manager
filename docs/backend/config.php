@@ -9,10 +9,10 @@ header("Access-Control-Allow-Credentials: true");
 header("Content-Type: application/json; charset=UTF-8");
 
 // --- GANTI DENGAN DETAIL DATABASE ANDA ---
-define('DB_HOST', 'sqlXXX.infinityfree.com');
-define('DB_USER', 'if0_XXXXXXXX');
-define('DB_PASS', 'YourPassword');
-define('DB_NAME', 'if0_XXXXXXXX_traderdb');
+define('DB_HOST', 'sql100.infinityfree.com');
+define('DB_USER', 'if0_39683887');
+define('DB_PASS', 'ILVx8jEo2NWxQt');
+define('DB_NAME', 'if0_39683887_db_income');
 
 /**
  * Membuat koneksi ke database MySQL.

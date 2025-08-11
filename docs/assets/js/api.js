@@ -1,6 +1,7 @@
 // PENTING: Ganti URL ini dengan URL backend PHP Anda di InfinityFree nanti
 // Contoh: 'https://namasitus.infinityfreeapp.com/backend/'
-const BASE_URL = 'http://localhost/trading-income-manager/backend/'; // URL untuk development lokal
+const BASE_URL = 'http://income-manager.infy.uk/backend/'; // URL untuk development lokal
+// const BASE_URL = 'http://localhost/trading-income-manager/backend/';
 
 /**
  * Fungsi pembantu untuk melakukan request fetch API.
