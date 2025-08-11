@@ -1,0 +1,43 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Default body font */
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9; /* slate-100 */
+}
+::-webkit-scrollbar-thumb {
+    background: #94a3b8; /* slate-400 */
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #64748b; /* slate-500 */
+}
+
+/* Sidebar link styling */
+.sidebar-link {
+    transition: all 0.2s ease-in-out;
+}
+
+.sidebar-link.active {
+    background-color: #e0f2fe; /* sky-100 */
+    color: #0c4a6e; /* sky-900 */
+    transform: translateX(4px);
+    font-weight: 600;
+}
+
+.sidebar-link:not(.active):hover {
+    background-color: #f1f5f9; /* slate-100 */
+    color: #0f172a; /* slate-900 */
+    transform: translateX(4px);
+}

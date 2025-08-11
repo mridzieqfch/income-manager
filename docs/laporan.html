@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan - Trading Income Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar Navigation -->
+        <aside class="w-64 bg-white text-slate-800 flex-shrink-0 p-4 border-r border-slate-200">
+            <div class="text-2xl font-bold mb-10 flex items-center gap-2 text-sky-700">
+                <i class='bx bxs-bar-chart-alt-2'></i>
+                <span>TradeMan</span>
+            </div>
+            <nav>
+                <ul>
+                    <li class="mb-3"><a href="index.html" class="sidebar-link flex items-center p-3 rounded-lg font-semibold"><i class='bx bxs-dashboard bx-sm mr-3'></i><span>Dashboard</span></a></li>
+                    <li class="mb-3"><a href="forex.html" class="sidebar-link flex items-center p-3 rounded-lg font-semibold"><i class='bx bx-dollar-circle bx-sm mr-3'></i><span>Forex</span></a></li>
+                    <li class="mb-3"><a href="saham.html" class="sidebar-link flex items-center p-3 rounded-lg font-semibold"><i class='bx bx-line-chart bx-sm mr-3'></i><span>Saham</span></a></li>
+                    <li class="mb-3"><a href="crypto.html" class="sidebar-link flex items-center p-3 rounded-lg font-semibold"><i class='bx bxl-bitcoin bx-sm mr-3'></i><span>Crypto</span></a></li>
+                    <li class="mb-3"><a href="laporan.html" class="sidebar-link flex items-center p-3 rounded-lg font-semibold"><i class='bx bxs-report bx-sm mr-3'></i><span>Laporan</span></a></li>
+                    <li class="mb-3"><a href="goals.html" class="sidebar-link flex items-center p-3 rounded-lg font-semibold"><i class='bx bxs-flag-alt bx-sm mr-3'></i><span>Sasaran</span></a></li>
+                </ul>
+            </nav>
+            <div class="absolute bottom-4 left-4"><a href="#" id="logout-btn" class="flex items-center p-3 text-red-600 hover:bg-red-100 rounded-lg w-56 font-semibold transition-colors"><i class='bx bx-log-out bx-sm mr-3'></i><span>Logout</span></a></div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 lg:p-10">
+            <header class="mb-8">
+                <h1 class="text-3xl font-bold text-slate-900">Laporan Keseluruhan</h1>
+                <p class="text-slate-500">Analisis semua data trading Anda dengan filter.</p>
+            </header>
+
+            <!-- Filter Section -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm mb-8">
+                <h3 class="text-xl font-semibold mb-4 text-slate-900">Filter Laporan</h3>
+                <form id="filter-form" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div>
+                        <label for="type" class="block text-sm font-medium mb-1 text-slate-600">Jenis Instrumen</label>
+                        <select id="type" name="type" class="w-full bg-white border border-slate-300 rounded-lg p-2 focus:ring-sky-500 focus:border-sky-500">
+                            <option value="semua">Semua</option>
+                            <option value="forex">Forex</option>
+                            <option value="saham">Saham</option>
+                            <option value="crypto">Crypto</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="start_date" class="block text-sm font-medium mb-1 text-slate-600">Tanggal Mulai</label>
+                        <input type="date" id="start_date" name="start_date" class="w-full bg-white border border-slate-300 rounded-lg p-2 focus:ring-sky-500 focus:border-sky-500">
+                    </div>
+                    <div>
+                        <label for="end_date" class="block text-sm font-medium mb-1 text-slate-600">Tanggal Akhir</label>
+                        <input type="date" id="end_date" name="end_date" class="w-full bg-white border border-slate-300 rounded-lg p-2 focus:ring-sky-500 focus:border-sky-500">
+                    </div>
+                    <div class="self-end">
+                        <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center transition-colors">
+                            <i class='bx bx-filter-alt mr-2'></i> Terapkan
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Data Table -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                 <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-semibold text-slate-900">Hasil Laporan</h3>
+                    <div>
+                        <button id="print-btn" class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-lg flex items-center transition-colors">
+                            <i class='bx bx-printer mr-2'></i> Cetak
+                        </button>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="border-b border-slate-200">
+                                <th class="p-3 font-semibold text-slate-600">Tanggal</th>
+                                <th class="p-3 font-semibold text-slate-600">Jenis</th>
+                                <th class="p-3 font-semibold text-slate-600">Simbol/Pair</th>
+                                <th class="p-3 font-semibold text-slate-600">Jumlah/Lot</th>
+                                <th class="p-3 font-semibold text-slate-600 text-right">Profit/Loss</th>
+                            </tr>
+                        </thead>
+                        <tbody id="report-table-body">
+                            <tr><td colspan="5" class="text-center p-6 text-slate-500">Gunakan filter untuk menampilkan data.</td></tr>
+                        </tbody>
+                        <tfoot class="border-t-2 border-slate-300 font-bold">
+                            <tr>
+                                <td colspan="4" class="p-3 text-right text-lg">Total Profit/Loss:</td>
+                                <td id="total-report" class="p-3 text-right text-lg">Rp 0</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/laporan.js"></script>
+</body>
+</html>

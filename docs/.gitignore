@@ -1,0 +1,51 @@
+# File: .gitignore
+
+# --- Umum ---
+# Abaikan file log
+*.log
+logs/
+*.logs
+
+# Abaikan folder build/distribusi
+/dist
+/build
+/public
+
+# --- File Sistem Operasi ---
+# Abaikan file sistem dari macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Abaikan file sistem dari Windows
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+*.[Dd]esktop.ini
+
+# --- File Editor & IDE ---
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains (PhpStorm, WebStorm, dll.)
+.idea/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# --- File Konfigurasi Lokal ---
+# Sangat disarankan untuk tidak menyimpan kredensial database di Git.
+# Jika Anda membuat file config.local.php untuk development, abaikan file tersebut.
+config.local.php
+/backend/config.local.php
+
+# --- Ketergantungan (jika menggunakan package manager) ---
+/node_modules
+/vendor
+composer.lock

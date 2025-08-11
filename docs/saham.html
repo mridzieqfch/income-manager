@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Saham - Trading Income Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar Navigation -->
+        <aside class="w-64 bg-white text-slate-800 flex-shrink-0 p-4 border-r border-slate-200">
+            <div class="text-2xl font-bold mb-10 flex items-center gap-2 text-sky-700">
+                <i class='bx bxs-bar-chart-alt-2'></i>
+                <span>TradeMan</span>
+            </div>
+            <nav>
+                <ul>
+                    <li class="mb-3"><a href="index.html" class="sidebar-link flex items-center p-3 rounded-lg font-semibold"><i class='bx bxs-dashboard bx-sm mr-3'></i><span>Dashboard</span></a></li>
+                    <li class="mb-3"><a href="forex.html" class="sidebar-link flex items-center p-3 rounded-lg font-semibold"><i class='bx bx-dollar-circle bx-sm mr-3'></i><span>Forex</span></a></li>
+                    <li class="mb-3"><a href="saham.html" class="sidebar-link flex items-center p-3 rounded-lg font-semibold"><i class='bx bx-line-chart bx-sm mr-3'></i><span>Saham</span></a></li>
+                    <li class="mb-3"><a href="crypto.html" class="sidebar-link flex items-center p-3 rounded-lg font-semibold"><i class='bx bxl-bitcoin bx-sm mr-3'></i><span>Crypto</span></a></li>
+                    <li class="mb-3"><a href="laporan.html" class="sidebar-link flex items-center p-3 rounded-lg font-semibold"><i class='bx bxs-report bx-sm mr-3'></i><span>Laporan</span></a></li>
+                    <li class="mb-3"><a href="goals.html" class="sidebar-link flex items-center p-3 rounded-lg font-semibold"><i class='bx bxs-flag-alt bx-sm mr-3'></i><span>Sasaran</span></a></li>
+                </ul>
+            </nav>
+            <div class="absolute bottom-4 left-4"><a href="#" id="logout-btn" class="flex items-center p-3 text-red-600 hover:bg-red-100 rounded-lg w-56 font-semibold transition-colors"><i class='bx bx-log-out bx-sm mr-3'></i><span>Logout</span></a></div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 lg:p-10">
+            <header class="mb-8">
+                <h1 class="text-3xl font-bold text-slate-900">Manajemen Trading Saham</h1>
+                <p class="text-slate-500">Catat dan kelola semua transaksi saham Anda di sini.</p>
+            </header>
+
+            <!-- Input Form -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm mb-8">
+                <h3 class="text-xl font-semibold mb-4 text-slate-900">Tambah Transaksi Saham Baru</h3>
+                <form id="saham-form" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div>
+                        <label for="tanggal" class="block text-sm font-medium mb-1 text-slate-600">Tanggal</label>
+                        <input type="date" id="tanggal" name="tanggal" required class="w-full bg-white border border-slate-300 rounded-lg p-2 focus:ring-sky-500 focus:border-sky-500">
+                    </div>
+                    <div>
+                        <label for="pair_or_symbol" class="block text-sm font-medium mb-1 text-slate-600">Kode Saham</label>
+                        <input type="text" id="pair_or_symbol" name="pair_or_symbol" placeholder="cth: BBCA" required class="w-full bg-white border border-slate-300 rounded-lg p-2 uppercase focus:ring-sky-500 focus:border-sky-500">
+                    </div>
+                    <div>
+                        <label for="lot_or_amount" class="block text-sm font-medium mb-1 text-slate-600">Jumlah Lot</label>
+                        <input type="number" step="1" id="lot_or_amount" name="lot_or_amount" placeholder="cth: 10" required class="w-full bg-white border border-slate-300 rounded-lg p-2 focus:ring-sky-500 focus:border-sky-500">
+                    </div>
+                    <div>
+                        <label for="profit_loss" class="block text-sm font-medium mb-1 text-slate-600">Profit/Loss (Rp)</label>
+                        <input type="number" step="1" id="profit_loss" name="profit_loss" placeholder="Gunakan - untuk loss" required class="w-full bg-white border border-slate-300 rounded-lg p-2 focus:ring-sky-500 focus:border-sky-500">
+                    </div>
+                    <div class="self-end">
+                        <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center transition-colors">
+                            <i class='bx bx-plus-circle mr-2'></i> Simpan
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Data Table -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <h3 class="text-xl font-semibold mb-4 text-slate-900">Riwayat Transaksi Saham</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="border-b border-slate-200">
+                                <th class="p-3 font-semibold text-slate-600">Tanggal</th>
+                                <th class="p-3 font-semibold text-slate-600">Kode Saham</th>
+                                <th class="p-3 font-semibold text-slate-600">Jumlah Lot</th>
+                                <th class="p-3 font-semibold text-slate-600">Profit/Loss</th>
+                                <th class="p-3 font-semibold text-slate-600">Keterangan</th>
+                                <th class="p-3 font-semibold text-slate-600 text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="saham-table-body">
+                            <tr><td colspan="6" class="text-center p-6 text-slate-500">Tidak ada data.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/saham.js"></script>
+</body>
+</html>
